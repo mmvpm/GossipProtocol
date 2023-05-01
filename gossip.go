@@ -71,6 +71,7 @@ func (p *Peer) AddSeed(seed string) {
 }
 
 func (p *Peer) Run() {
+	log.Println(p.Addr(), "started")
 	ticker := time.NewTicker(p.config.PingPeriod)
 	for {
 		select {
