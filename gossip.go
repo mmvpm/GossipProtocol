@@ -43,10 +43,10 @@ func (p *Peer) Addr() string {
 	return p.config.SelfAddr
 }
 
-func (p *Peer) GetMembers() map[string]*PeerInfo {
+func (p *Peer) GetMembers() map[string]PeerInfo {
 	allData := p.connections.GetAllData()
 
-	members := make(map[string]*PeerInfo, len(allData))
+	members := make(map[string]PeerInfo, len(allData))
 	for addr, data := range allData {
 		members[addr] = peerDataToInfo(data)
 	}

@@ -6,6 +6,6 @@ type PeerInfo struct {
 	Name string
 }
 
-func peerDataToInfo(data *service.PeerData) *PeerInfo {
-	return &PeerInfo{Name: data.Name}
+func peerDataToInfo(data *service.PeerData) PeerInfo {
+	return PeerInfo{Name: data.Name}
 }
