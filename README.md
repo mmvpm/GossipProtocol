@@ -1,6 +1,6 @@
 # Gossip
 
-[![Build Status](https://github.com/IdeaSeeker/GossipProtocol/workflows/CI/badge.svg)](https://github.com/IdeaSeeker/GossipProtocol/actions)
+[![Build Status](https://github.com/IdeaSeeker/GossipProtocol/workflows/Run%20tests/badge.svg)](https://github.com/IdeaSeeker/GossipProtocol/actions)
 
 Gossip — это протокол в одноранговой компьютерной коммуникации, созданный для распространения информации по сети. Каждый узел может передавать соседям обновляемые данные, которые известны этому узлу.
 
