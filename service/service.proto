@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option go_package = "github.com/ideaseeker/gossip/service";
+
+message PingMessage {}
+message PongMessage {}
+
+message PeerData {
+  string addr = 1;
+  int32 version = 2;
+  bool deleted = 3;
+
+  // PeerInfo
+  string name = 4;
+}
+
+service GossipService {
+  rpc Ping (PingMessage) returns (PongMessage) {}
+  rpc ShareData (stream PeerData) returns (stream PeerData) {}
+}
