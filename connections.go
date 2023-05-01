@@ -53,8 +53,7 @@ func (c *Connections) UpdateSelfInfo(info *PeerInfo) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
 
-	updatePeerData(c.seedToData[c.selfAddr], info)
-	c.seedToData[c.selfAddr].Version += 1
+	c.seedToData[c.selfAddr] = updatePeerData(c.seedToData[c.selfAddr], info)
 }
 
 func (c *Connections) UpsertData(seed string, newData *service.PeerData) (alreadyExists bool) {
@@ -116,4 +115,14 @@ func (c *Connections) Close() {
 
 func newPeerData(seed string) *service.PeerData {
 	return &service.PeerData{Addr: seed}
+}
+
+func updatePeerData(data *service.PeerData, info *PeerInfo) *service.PeerData {
+	return &service.PeerData{
+		Addr:    data.Addr,
+		Version: data.Version + 1,
+		Deleted: data.Deleted,
+		// PeerInfo
+		Name: info.Name,
+	}
 }
