@@ -89,7 +89,7 @@ func (p *Peer) Stop() {
 	log.Println(p.Addr(), "cancelled context")
 
 	p.connections.Close()
-	log.Println(p.Addr(), "close all connections")
+	log.Println(p.Addr(), "closed all connections")
 }
 
 // gRPC server implementation
