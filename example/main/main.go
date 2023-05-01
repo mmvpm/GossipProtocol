@@ -23,16 +23,16 @@ func main() {
 
 	peer0.AddSeed(peer1.Addr())
 
-	time.Sleep(pingPeriod * 5) // gossip sync
+	time.Sleep(pingPeriod * 10) // gossip sync
 
 	log.Println("peer0 members:", peer0.GetMembers())
 	log.Println("peer1 members:", peer1.GetMembers())
 
 	stop0()
 
-	time.Sleep(pingPeriod * 5) // gossip sync
+	time.Sleep(pingPeriod * 10) // gossip sync
 
-	log.Printf("peer1 members: %v", peer1.GetMembers())
+	log.Println("peer1 members:", peer1.GetMembers())
 
 	stop1()
 }
