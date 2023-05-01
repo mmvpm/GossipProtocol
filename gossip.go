@@ -103,10 +103,12 @@ func (p *Peer) ShareData(stream service.GossipService_ShareDataServer) error {
 		return err
 	}
 	p.updateWithOtherData(otherData)
+	log.Println(p.Addr(), "received other data")
 
 	if err = p.sendAllInfo(stream.Send); err != nil {
 		return err
 	}
+	log.Println(p.Addr(), "sent self data")
 
 	return nil
 }
@@ -142,7 +144,6 @@ func (p *Peer) pingConn(conn *grpc.ClientConn) error {
 func (p *Peer) sendInfoToSomeone() {
 	seed, conn, err := p.connections.GetRandomConn()
 	if err != nil {
-		log.Println(p.Addr(), "cannot send info because of", err)
 		return
 	}
 
@@ -165,12 +166,14 @@ func (p *Peer) sendDataToConn(conn *grpc.ClientConn) error {
 		return err
 	}
 	_ = stream.CloseSend()
+	log.Println(p.Addr(), "sent self data")
 
 	otherData, err := p.recvAllInfo(stream.Recv)
 	if err != nil {
 		return err
 	}
 	p.updateWithOtherData(otherData)
+	log.Println(p.Addr(), "received other data")
 
 	return nil
 }
@@ -189,7 +192,6 @@ func (p *Peer) sendAllInfo(send func(*service.PeerData) error) error {
 		}
 	}
 
-	log.Println(p.Addr(), "sent", p.connections.GetAllData())
 	return nil
 }
 
@@ -213,7 +215,6 @@ func (p *Peer) recvAllInfo(recv func() (*service.PeerData, error)) (map[string]*
 
 		result[data.GetAddr()] = data
 	}
-	log.Println(p.Addr(), "received", result)
 
 	return result, nil
 }
@@ -225,6 +226,4 @@ func (p *Peer) updateWithOtherData(otherData map[string]*service.PeerData) {
 			p.AddSeed(seed)
 		}
 	}
-	log.Println(p.Addr(), "updated with", otherData)
-	log.Println(p.Addr(), "members =", p.GetMembers())
 }
