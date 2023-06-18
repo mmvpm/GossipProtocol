@@ -5,7 +5,7 @@ import (
 	"errors"
 	"sync"
 
-	"github.com/ideaseeker/gossip/service"
+	"github.com/mmvpm/gossip/service"
 	"google.golang.org/grpc"
 )
 

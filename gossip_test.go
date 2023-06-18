@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ideaseeker/gossip"
+	"github.com/mmvpm/gossip"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/goleak"
 )

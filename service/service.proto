@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/ideaseeker/gossip/service";
+option go_package = "github.com/mmvpm/gossip/service";
 
 message PingMessage {}
 message PongMessage {}

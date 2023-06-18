@@ -1,6 +1,6 @@
 package gossip
 
-import "github.com/ideaseeker/gossip/service"
+import "github.com/mmvpm/gossip/service"
 
 type PeerInfo struct {
 	Name string

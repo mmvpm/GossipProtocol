@@ -3,7 +3,7 @@ package gossip
 import (
 	"net"
 
-	"github.com/ideaseeker/gossip/service"
+	"github.com/mmvpm/gossip/service"
 	"google.golang.org/grpc"
 )
 

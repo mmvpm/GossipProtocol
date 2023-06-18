@@ -1,4 +1,4 @@
-module github.com/ideaseeker/gossip
+module github.com/mmvpm/gossip
 
 go 1.19
 

@@ -4,7 +4,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/ideaseeker/gossip"
+	"github.com/mmvpm/gossip"
 )
 
 const pingPeriod = 100 * time.Millisecond
